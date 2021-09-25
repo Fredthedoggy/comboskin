@@ -1,0 +1,26 @@
+[
+    {
+        "short": "2lr",
+        "name": "Two Left/Right",
+        "image": "two-lr.png",
+        "amount": 2
+    },
+    {
+        "short": "2inside",
+        "name": "Two Inside Eachother",
+        "image": "two-inside.png",
+        "amount": 2
+    },
+    {
+        "short": "3tmb",
+        "name": "Three Top/Mid/Bottom",
+        "image": "three-tmb.png",
+        "amount": 3
+    },
+    {
+        "short": "4lbltrbrt",
+        "name": "Four Corners",
+        "image": "four-lbltrbrt.png",
+        "amount": 4
+    }
+]
