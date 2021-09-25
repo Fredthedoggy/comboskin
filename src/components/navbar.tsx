@@ -1,5 +1,5 @@
 import tw from 'twin.macro';
-import { BrowserRouter, Link, Router } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faMask, faSearch, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 export default function Navbar() {
     const [showSearchBar, setShowSearchBar] = useState(false);
+    const location = useLocation();
 
     function NavElement({
         icon,
@@ -27,7 +28,7 @@ export default function Navbar() {
                     onClick={onClick}
                     css={css`
                         ${tw`bg-gray-200 hover:bg-gray-500 flex content-center`}
-                        ${to && window.location.pathname === to && tw`bg-gray-400`}
+                        ${to && location.pathname === to && tw`bg-gray-400`}
                     `}
                 >
                     {children}
