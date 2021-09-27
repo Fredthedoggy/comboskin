@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import axios, { AxiosResponse } from 'axios';
 import { Async } from 'react-async';
 
-interface playerDB {
+export interface playerDB {
     data: { player: { username?: string; id?: string } };
     success: boolean;
 }

@@ -27,8 +27,7 @@ async function skinImage(skinUrl: string, capeUrl?: string | null, slim?: boolea
     return image;
 }
 
-export default function Gridtile({ skin, name }: { skin: string; name: string }) {
-    const BackgroundImage = styled.div`
+const BackgroundImage = styled.div`
         ${tw`h-full w-max rounded-lg shadow-md border-gray-300 border-4 mx-auto max-w-full`}
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAABtJREFUGFdj3Lt3738nJycGxv/////ft28fAwBbawo1G1p8AgAAAABJRU5ErkJggg==");
         image-rendering: pixelated;
@@ -39,11 +38,13 @@ export default function Gridtile({ skin, name }: { skin: string; name: string })
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAABtJREFUGFdjfPfu3X9BQUEGxv////9///49AwBfcArIPbKUHwAAAABJRU5ErkJggg==');
     `;
 
+export default function Gridtile({ skin, display, short }: { skin: string; display: string; short: string }) {
+
     return (
-        <div>
+        <a href={'/view/' + short}>
             <BackgroundImage>
                 <div css={tw`overflow-hidden bg-gray-100 font-medium text-center mx-auto w-full py-1 rounded-t-md`}>
-                    {name}
+                    {display}
                 </div>
                 <Suspense fallback={<></>}>
                     <Async promiseFn={() => skinImage(skin)}>
@@ -57,6 +58,6 @@ export default function Gridtile({ skin, name }: { skin: string; name: string })
                     </Async>
                 </Suspense>
             </BackgroundImage>
-        </div>
+        </a>
     );
 }
