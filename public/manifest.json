@@ -1,6 +1,11 @@
 {
-    "short_name": "React App",
-    "name": "Create React App Sample",
+    "author": "ComboSkin",
+    "developer": {
+        "name": "Fredthedoggy",
+        "url": "https://fredthedoggy.me/"
+    },
+    "short_name": "Combo",
+    "name": "Combo Skin",
     "icons": [
         {
             "src": "favicon.ico",
@@ -20,6 +25,6 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "theme_color": "#1177d6",
+    "background_color": "#bfbfbf"
 }
