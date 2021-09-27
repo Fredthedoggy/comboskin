@@ -1,64 +1,13 @@
 import tw from 'twin.macro';
-import { Link, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import { faHome, faMask, faSearch, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { css } from 'styled-components';
 import * as React from 'react';
 import { useState } from 'react';
+import { NavElement } from './NavElement';
 
 export default function Navbar() {
     const [showSearchBar, setShowSearchBar] = useState(false);
-    const location = useLocation();
-
-    function NavElement({
-        icon,
-        to,
-        children,
-        onClick,
-    }: {
-        icon?: IconProp;
-        to?: string;
-        children?: React.ReactNode;
-        onClick?: () => void;
-    }) {
-        function Icon() {
-            return (
-                <div
-                    onClick={onClick}
-                    css={css`
-                        ${tw`bg-gray-200 hover:bg-gray-500 flex content-center`}
-                        ${to && location.pathname === to && tw`bg-gray-400`}
-                    `}
-                >
-                    {children}
-                    {icon && (
-                        <div
-                            css={tw`m-auto object-scale-down w-14 h-14 flex content-center hover:bg-gray-500 hover:text-gray-200`}
-                        >
-                            <div css={tw`m-auto`}>
-                                <FontAwesomeIcon icon={icon} size={'lg'} />
-                            </div>
-                        </div>
-                    )}
-                </div>
-            );
-        }
-
-        if (to) {
-            return (
-                <Link to={to}>
-                    <Icon />
-                </Link>
-            );
-        } else {
-            return (
-                <div css={tw`hover:cursor-pointer`}>
-                    <Icon />
-                </div>
-            );
-        }
-    }
 
     return (
         <>

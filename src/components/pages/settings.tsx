@@ -39,6 +39,7 @@ export default function Settings() {
                                     <Input
                                         display={type.display}
                                         name={type.name}
+                                        uuid={data.data.data.player.id ?? ''}
                                         initial={
                                             (data.data.success
                                                 ? data.data.data.player.username
@@ -56,7 +57,7 @@ export default function Settings() {
     );
 }
 
-function Input({ initial, name, display }: { initial: string; name: string; display: string }) {
+function Input({ initial, name, display, uuid }: { initial: string; name: string; display: string; uuid: string }) {
     const [value, setValue] = useState(initial);
     let textInput = React.createRef<HTMLInputElement>();
 
@@ -82,6 +83,11 @@ function Input({ initial, name, display }: { initial: string; name: string; disp
             <label css={tw`w-full text-2xl my-1`}>
                 <div css={tw`text-center`}>{display}</div>
             </label>
+            <img
+                alt={'User Icon'}
+                src={'https://crafatar.com/avatars/' + uuid}
+                css={tw`rounded-sm h-10 w-10 my-auto inline-block`}
+            />
             <input
                 ref={textInput}
                 type={'text'}
