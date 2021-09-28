@@ -2,6 +2,7 @@ import React, { useState, Suspense } from 'react';
 import tw from 'twin.macro';
 import axios, { AxiosResponse } from 'axios';
 import { Async } from 'react-async';
+import { css } from 'styled-components';
 
 export interface playerDB {
     data: { player: { username?: string; id?: string } };
@@ -83,23 +84,55 @@ function Input({ initial, name, display, uuid }: { initial: string; name: string
             <label css={tw`w-full text-2xl my-1`}>
                 <div css={tw`text-center`}>{display}</div>
             </label>
-            <img
-                alt={'User Icon'}
-                src={'https://crafatar.com/avatars/' + uuid}
-                css={tw`rounded-sm h-10 w-10 my-auto inline-block`}
-            />
-            <input
-                ref={textInput}
-                type={'text'}
-                value={value}
-                onChange={() => setValue(textInput.current?.value ?? 'da8a8993-adfa-4d29-99b1-9d0f62fbb78d')}
-                css={tw`h-10 py-2 px-2 rounded-md hover:outline-none focus:outline-none mx-3`}
-            />
-            <input
-                type="submit"
-                css={tw`px-3 py-2 h-10 rounded-md bg-gray-300 hover:cursor-pointer hover:outline-none focus:outline-none`}
-                value={'Update Skin'}
-            />
+            <div css={tw`flex flex-row`}>
+                <div
+                    css={css`
+                        ${tw`w-max inline-block rounded-sm my-auto overflow-hidden`}
+                        .default {
+                            display: block;
+                        }
+
+                        .overlay {
+                            display: none;
+                        }
+
+                        :hover {
+                            .default {
+                                display: none;
+                            }
+
+                            .overlay {
+                                display: block;
+                            }
+                        }
+                    `}
+                >
+                    <img
+                        className={'default'}
+                        alt={'User Icon'}
+                        src={'https://crafatar.com/avatars/' + uuid}
+                        css={tw`h-10 w-10`}
+                    />
+                    <img
+                        className={'overlay'}
+                        alt={'User Icon'}
+                        src={'https://crafatar.com/avatars/' + uuid + '?overlay'}
+                        css={tw`h-10 w-10`}
+                    />
+                </div>
+                <input
+                    ref={textInput}
+                    type={'text'}
+                    value={value}
+                    onChange={() => setValue(textInput.current?.value ?? 'da8a8993-adfa-4d29-99b1-9d0f62fbb78d')}
+                    css={tw`h-10 py-2 px-2 rounded-md hover:outline-none focus:outline-none mx-3`}
+                />
+                <input
+                    type="submit"
+                    css={tw`px-3 py-2 h-10 rounded-md bg-gray-300 hover:cursor-pointer hover:outline-none focus:outline-none`}
+                    value={'Update Skin'}
+                />
+            </div>
         </form>
     );
 }
