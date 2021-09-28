@@ -69,7 +69,7 @@ export default function Skinview({
     }, [doWalk]);
 
     return (
-        <div css={tw`ml-auto w-full`}>
+        <div>
             <BackgroundImage>
                 <div
                     onClick={() => setDoWalk(!doWalk)}

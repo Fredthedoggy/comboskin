@@ -17,7 +17,11 @@ module.exports = {
             width: {
                 80: '20rem',
                 72: '18rem',
+                max: 'max-content',
             },
+            height: {
+                max: 'max-content',
+            }
         },
     },
 };
