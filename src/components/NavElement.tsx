@@ -9,22 +9,24 @@ export function NavElement({
     to,
     children,
     onClick,
+    right
 }: {
     icon?: IconProp;
     to?: string;
     children?: React.ReactNode;
     onClick?: () => void;
+    right?: boolean;
 }) {
     if (to) {
         return (
             <Link to={to}>
-                <Icon icon={icon} to={to} children={children} onClick={onClick} />
+                <Icon icon={icon} to={to} children={children} onClick={onClick} right={right}/>
             </Link>
         );
     } else {
         return (
             <div css={tw`hover:cursor-pointer`}>
-                <Icon icon={icon} children={children} onClick={onClick} />
+                <Icon icon={icon} children={children} onClick={onClick} right={right}/>
             </div>
         );
     }

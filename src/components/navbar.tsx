@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
-import { faHome, faMask, faSearch, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import {faMask, faQuestion, faSearch, faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import { css } from 'styled-components';
 import * as React from 'react';
 import { useState } from 'react';
@@ -15,9 +15,9 @@ export default function Navbar() {
                 <Link to={'/'} css={tw`my-auto mx-3 hidden sm:block`}>
                     <span css={tw`text-3xl font-semibold`}>ComboSkin</span>
                 </Link>
-                <NavElement to={'/'} icon={faHome} />
-                <NavElement icon={faUserPlus} />
-                <NavElement icon={faMask} />
+                <NavElement icon={faQuestion} right><span css={tw`my-auto font-semibold text-lg mr-4`}>FAQ</span></NavElement>
+                <NavElement icon={faUserPlus} right><span css={tw`my-auto font-semibold text-lg mr-4`}>Custom Combo</span></NavElement>
+                <NavElement icon={faMask} right><span css={tw`my-auto font-semibold text-lg mr-4`}>Skin Masks</span></NavElement>
                 <div css={tw`ml-auto flex flex-row`}>
                     <NavElement icon={faSearch} onClick={() => setShowSearchBar(!showSearchBar)}>
                         <input

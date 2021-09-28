@@ -10,11 +10,13 @@ export function Icon({
     to,
     children,
     onClick,
+    right,
 }: {
     icon?: IconProp;
     to?: string;
     children?: React.ReactNode;
     onClick?: () => void;
+    right?: boolean;
 }) {
     const location = useLocation();
     return (
@@ -25,16 +27,15 @@ export function Icon({
                 ${to && location.pathname === to && tw`bg-gray-400`}
             `}
         >
-            {children}
+            {!right && children}
             {icon && (
-                <div
-                    css={tw`m-auto object-scale-down w-14 h-14 flex content-center`}
-                >
+                <div css={tw`m-auto object-scale-down w-14 h-14 flex content-center`}>
                     <div css={tw`m-auto`}>
                         <FontAwesomeIcon icon={icon} size={'lg'} />
                     </div>
                 </div>
             )}
+            {right && children}
         </div>
     );
 }

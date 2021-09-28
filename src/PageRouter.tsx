@@ -1,15 +1,12 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Gridtile from './components/pages/skins/gridtile';
 import { default as axios } from 'axios';
 import { decompress } from 'compress-json';
 import { ApiData } from './types';
-import { Async } from 'react-async';
-import SkinMerger from './SkinMerger';
 import Settings from './components/pages/settings';
-import tw from 'twin.macro';
 import Navbar from './components/navbar';
 import Viewer from './components/pages/viewer/viewer';
+import Home from './components/pages/home';
 
 export default function PageRouter() {
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
@@ -39,36 +36,7 @@ export default function PageRouter() {
             {data && (
                 <Switch>
                     <Route path={'/'} exact>
-                        <div css={tw`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 m-6`}>
-                            {data.map((image) => {
-                                return (
-                                    <div key={image.short}>
-                                        <Suspense fallback={<></>}>
-                                            <Async
-                                                promiseFn={async () =>
-                                                    (await SkinMerger(
-                                                        image,
-                                                        ...Array.from(Array(10).keys()).map(
-                                                            (n) =>
-                                                                'https://crafatar.com/skins/' +
-                                                                localStorage.getItem('skin' + n),
-                                                        ),
-                                                    )) ?? ''
-                                                }
-                                            >
-                                                {({ data, isLoading }: { data: string; isLoading: boolean }) => {
-                                                    return isLoading ? (
-                                                        <></>
-                                                    ) : (
-                                                        <Gridtile skin={data} display={image.name} short={image.short}/>
-                                                    );
-                                                }}
-                                            </Async>
-                                        </Suspense>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                        <Home data={data} />
                     </Route>
                     <Route path={'/settings'}>
                         <Settings />
