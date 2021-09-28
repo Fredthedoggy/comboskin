@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { SkinViewer } from 'skinview3d';
 import { Async } from 'react-async';
+import { Link } from 'react-router-dom';
 
 async function skinImage(skinUrl: string, capeUrl?: string | null, slim?: boolean) {
     const skinViewer = new SkinViewer({
@@ -28,22 +29,21 @@ async function skinImage(skinUrl: string, capeUrl?: string | null, slim?: boolea
 }
 
 const BackgroundImage = styled.div`
-        ${tw`h-full w-max rounded-lg shadow-md border-gray-300 border-4 mx-auto max-w-full`}
-        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAABtJREFUGFdj3Lt3738nJycGxv/////ft28fAwBbawo1G1p8AgAAAABJRU5ErkJggg==");
-        image-rendering: pixelated;
-        image-rendering: -moz-crisp-edges;
-        image-rendering: crisp-edges;
-        background-repeat: repeat;
-        background-size: 20px;
-        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAABtJREFUGFdjfPfu3X9BQUEGxv////9///49AwBfcArIPbKUHwAAAABJRU5ErkJggg==');
-    `;
+    ${tw`h-full w-max rounded-lg shadow-md border-gray-300 border-4 mx-auto max-w-full`}
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAABtJREFUGFdj3Lt3738nJycGxv/////ft28fAwBbawo1G1p8AgAAAABJRU5ErkJggg==");
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    background-repeat: repeat;
+    background-size: 20px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAABtJREFUGFdjfPfu3X9BQUEGxv////9///49AwBfcArIPbKUHwAAAABJRU5ErkJggg==');
+`;
 
 export default function Gridtile({ skin, display, short }: { skin: string; display: string; short: string }) {
-
     return (
-        <a href={'/view/' + short}>
+        <Link to={'/view/' + short}>
             <BackgroundImage>
-                <div css={tw`overflow-hidden bg-gray-100 font-medium text-center mx-auto w-full py-1 rounded-t-md`}>
+                <div css={tw`overflow-hidden bg-gray-100 font-medium text-xl text-center mx-auto w-full py-1 rounded-t-md`}>
                     {display}
                 </div>
                 <Suspense fallback={<></>}>
@@ -58,6 +58,6 @@ export default function Gridtile({ skin, display, short }: { skin: string; displ
                     </Async>
                 </Suspense>
             </BackgroundImage>
-        </a>
+        </Link>
     );
 }
