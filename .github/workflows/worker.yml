@@ -16,4 +16,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           workingDirectory: 'worker'
-          preCommands: 'npm i -g yarn && yarn && yarn data && yarn worker'
+          preCommands: 'yarn && yarn data && yarn worker'
