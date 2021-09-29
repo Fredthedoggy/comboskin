@@ -15,6 +15,7 @@
 public/data.json
 worker/data.json
 worker/SkinMerger.js
+worker/package.json
 
 # editing files
 /overlaycreator/images
