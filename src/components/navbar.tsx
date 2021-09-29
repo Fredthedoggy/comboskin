@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
-import { faMask, faQuestion, faSearch, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faMask, faQuestion, faSearch, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { css } from 'styled-components';
 import * as React from 'react';
 import { useState } from 'react';
@@ -15,6 +15,9 @@ export default function Navbar() {
                 <Link to={'/'} css={tw`my-auto mx-3 hidden sm:block`}>
                     <span css={tw`text-3xl font-semibold`}>ComboSkin</span>
                 </Link>
+                <div css={tw`sm:hidden`}>
+                    <NavElement icon={faHome} to={'/'} right />
+                </div>
                 <NavElement icon={faQuestion} right>
                     <span css={tw`my-auto font-semibold text-lg mr-4 hidden lg:block`}>FAQ</span>
                 </NavElement>
