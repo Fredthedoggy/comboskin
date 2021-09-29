@@ -46,7 +46,7 @@
         "build": "yarn data && react-scripts build",
         "eject": "react-scripts eject",
         "overlay": "node overlaycreator/create.js",
-        "worker": "tsc src/SkinMerger.ts -outDir worker/"
+        "worker": "tsc src/SkinMerger.ts -outDir worker/ --module CommonJS"
     },
     "eslintConfig": {
         "extends": [
