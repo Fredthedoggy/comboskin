@@ -49,7 +49,7 @@ export default function Viewer({ skinDetails }: { combo: string; skinDetails: Ap
                                         <></>
                                     ) : (
                                         <form
-                                            css={tw`w-full m-4 flex flex-row`}
+                                            css={tw`w-full m-4 flex flex-row content-center`}
                                             onSubmit={handleSubmit(async (input) => {
                                                 const val = input[id];
                                                 const data: playerDB = (
