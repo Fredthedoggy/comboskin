@@ -5,6 +5,7 @@
     "dependencies": {
         "@babel/core": "^7.15.5",
         "@babel/plugin-transform-react-jsx": "^7.14.9",
+        "@cloudflare/wrangler": "^1.19.3",
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
         "@fortawesome/react-fontawesome": "^0.1.15",
@@ -44,7 +45,8 @@
         "start": "yarn data && react-scripts start",
         "build": "yarn data && react-scripts build",
         "eject": "react-scripts eject",
-        "overlay": "node overlaycreator/create.js"
+        "overlay": "node overlaycreator/create.js",
+        "worker": "tsc src/SkinMerger.ts -outDir worker/"
     },
     "eslintConfig": {
         "extends": [

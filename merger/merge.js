@@ -6,6 +6,7 @@ const merges = JSON.parse(fs.readFileSync('merger/merges.json').toString());
 
 async function merge() {
     if (fs.existsSync('public/data.json')) await fs.rmSync('public/data.json');
+    if (fs.existsSync('worker/data.json')) await fs.rmSync('worker/data.json');
     const globalImages = [];
 
     for (let i = 0; i < merges.length; i++) {
@@ -36,10 +37,12 @@ async function merge() {
     }
 
     fs.writeFileSync('public/data.json', Buffer.from(JSON.stringify(compress(globalImages))));
+    fs.writeFileSync('worker/data.json', Buffer.from(JSON.stringify(globalImages)));
+
 }
 
 function rgbToHex(r, g, b, a) {
-    if (r > 255 || g > 255 || b > 255 || a > 255) throw 'Invalid color component';
+    if (r > 255 || g > 255 || b > 255 || a > 255) return '';
     return (
         '#' +
         ('00' + r.toString(16)).slice(-2) +

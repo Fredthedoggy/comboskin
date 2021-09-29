@@ -1,0 +1,5 @@
+name = "combo-api"
+type = "javascript"
+account_id = "91aef47cf35606d7cf23ec823297834e"
+
+workers_dev = true

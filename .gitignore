@@ -12,8 +12,9 @@
 /build
 
 # generated files
-/public/data.json
 public/data.json
+worker/data.json
+worker/SkinMerger.js
 
 # editing files
 /overlaycreator/images
