@@ -22,7 +22,7 @@ async function merge() {
                 if (data[3] === 0) continue;
                 const hex = rgbToHex(data[0], data[1], data[2], data[3]);
                 if (colors[hex] === undefined) {
-                    colors[hex] = (Object.values(colors).sort()[Object.values(colors).length - 1] ?? -1) + 1;
+                    colors[hex] = (Object.values(colors).sort()[Object.values(colors).length - 1] || -1) + 1;
                 }
                 if (!imageJson[x]) imageJson[x] = {};
                 imageJson[x][y] = colors[hex];
