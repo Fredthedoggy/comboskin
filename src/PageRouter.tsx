@@ -8,6 +8,9 @@ import Navbar from './components/navbar';
 import Viewer from './components/pages/viewer/viewer';
 import Home from './components/pages/home';
 import tw from 'twin.macro';
+import FAQ from "./components/pages/FAQ";
+import Custom from "./components/pages/Custom";
+import Masks from "./components/pages/Masks";
 
 export default function PageRouter() {
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
@@ -42,6 +45,15 @@ export default function PageRouter() {
                         </Route>
                         <Route path={'/settings'}>
                             <Settings />
+                        </Route>
+                        <Route path={'/faq'}>
+                            <FAQ />
+                        </Route>
+                        <Route path={'/custom'}>
+                            <Custom />
+                        </Route>
+                        <Route path={'/masks'}>
+                            <Masks />
                         </Route>
                         <Route
                             path={'/view/:combo'}

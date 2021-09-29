@@ -18,13 +18,13 @@ export default function Navbar() {
                 <div css={tw`sm:hidden`}>
                     <NavElement icon={faHome} to={'/'} right />
                 </div>
-                <NavElement icon={faQuestion} right>
+                <NavElement icon={faQuestion} to={'/faq'} right>
                     <span css={tw`my-auto font-semibold text-lg mr-4 hidden lg:block`}>FAQ</span>
                 </NavElement>
-                <NavElement icon={faUserPlus} right>
+                <NavElement icon={faUserPlus} to={'/custom'} right>
                     <span css={tw`my-auto font-semibold text-lg mr-4 hidden lg:block`}>Custom Combo</span>
                 </NavElement>
-                <NavElement icon={faMask} right>
+                <NavElement icon={faMask} to={'/masks'} right>
                     <span css={tw`my-auto font-semibold text-lg mr-4 hidden lg:block`}>Skin Masks</span>
                 </NavElement>
                 <div css={tw`ml-auto flex flex-row`}>
