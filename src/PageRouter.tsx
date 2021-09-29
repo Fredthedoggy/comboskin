@@ -7,6 +7,7 @@ import Settings from './components/pages/settings';
 import Navbar from './components/navbar';
 import Viewer from './components/pages/viewer/viewer';
 import Home from './components/pages/home';
+import tw from 'twin.macro';
 
 export default function PageRouter() {
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
@@ -32,28 +33,38 @@ export default function PageRouter() {
     });
     return (
         <BrowserRouter>
-            <Navbar />
-            {data && (
-                <Switch>
-                    <Route path={'/'} exact>
-                        <Home data={data} />
-                    </Route>
-                    <Route path={'/settings'}>
-                        <Settings />
-                    </Route>
-                    <Route
-                        path={'/view/:combo'}
-                        render={({ match }) => {
-                            const combo = match.params.combo;
-                            const interData = data.filter((d) => d.short === combo)[0];
-                            return interData ? <Viewer combo={combo} skinDetails={interData} /> : <>404</>;
-                        }}
-                    />
-                    <Route path={'*'}>
-                        <div>404</div>
-                    </Route>
-                </Switch>
-            )}
+            <div css={tw`flex flex-col h-screen`}>
+                <Navbar />
+                {data && (
+                    <Switch>
+                        <Route path={'/'} exact>
+                            <Home data={data} />
+                        </Route>
+                        <Route path={'/settings'}>
+                            <Settings />
+                        </Route>
+                        <Route
+                            path={'/view/:combo'}
+                            render={({ match }) => {
+                                const combo = match.params.combo;
+                                const interData = data.filter((d) => d.short === combo)[0];
+                                return interData ? <Viewer combo={combo} skinDetails={interData} /> : <>404</>;
+                            }}
+                        />
+                        <Route path={'*'}>
+                            <div>404</div>
+                        </Route>
+                    </Switch>
+                )}
+                <div css={tw`h-20 w-full mt-auto`}>
+                    <div css={tw`text-gray-600 w-full bg-gray-200 flex flex-row content-center h-14 mt-6`}>
+                        <span css={tw`m-auto`}>
+                            © Copyright 2021{new Date().getFullYear() !== 2021 ? ' - ' + new Date().getFullYear() : ''}
+                            &nbsp;Fredthedoggy
+                        </span>
+                    </div>
+                </div>
+            </div>
         </BrowserRouter>
     );
 }
