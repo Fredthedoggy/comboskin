@@ -22,7 +22,9 @@ async function merge() {
                 if (data[3] === 0) continue;
                 const hex = rgbToHex(data[0], data[1], data[2], data[3]);
                 if (colors[hex] === undefined) {
-                    colors[hex] = (Object.values(colors).sort()[Object.values(colors).length - 1] || -1) + 1;
+                    let newColor = Object.values(colors).sort()[Object.values(colors).length - 1];
+                    if (newColor === undefined) newColor = -1;
+                    colors[hex] = newColor + 1;
                 }
                 if (!imageJson[x]) imageJson[x] = {};
                 imageJson[x][y] = colors[hex];
@@ -42,7 +44,7 @@ async function merge() {
 }
 
 function rgbToHex(r, g, b, a) {
-    if (r > 255 || g > 255 || b > 255 || a > 255) return '';
+    if (r > 255 || g > 255 || b > 255 || a > 255) throw new Error('Invalid color component');
     return (
         '#' +
         ('00' + r.toString(16)).slice(-2) +
