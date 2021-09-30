@@ -1,14 +1,16 @@
-const merger = require('./SkinMerger');
-const data = require('./data.json');
+// import merger from './SkinMerger'
+import data from './data.json'
 
 // eslint-disable-next-line no-restricted-globals
 addEventListener('fetch', (event) => {
     event.respondWith(handleRequest(event.request).catch((err) => new Response(err.stack, { status: 500 })));
 });
 
-const error404 = new Response(JSON.stringify({ error: 404 }), {
-    headers: { 'Content-Type': 'application/json' },
-});
+function error404() {
+    return new Response(JSON.stringify({error: 404}), {
+        headers: {'Content-Type': 'application/json'},
+    });
+}
 
 async function handleRequest(request) {
     const { pathname } = new URL(request.url);
@@ -21,5 +23,5 @@ async function handleRequest(request) {
         }
     }
 
-    return error404;
+    return error404();
 }

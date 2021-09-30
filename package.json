@@ -1,8 +1,7 @@
 {
-    "name": "overlay",
+    "name": "comboskin",
     "version": "0.1.0",
     "private": true,
-    "main": "index.js",
     "dependencies": {
         "@babel/core": "^7.15.5",
         "@babel/plugin-transform-react-jsx": "^7.14.9",
@@ -47,7 +46,7 @@
         "build": "yarn data && react-scripts build",
         "eject": "react-scripts eject",
         "overlay": "node overlaycreator/create.js",
-        "worker": "tsc src/SkinMerger.ts -outDir worker/ --module CommonJS && cp ./package.json ./worker/package.json"
+        "worker": "tsc src/SkinMerger.ts -outDir worker/ --module CommonJS"
     },
     "eslintConfig": {
         "extends": [
