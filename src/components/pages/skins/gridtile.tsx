@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import { SkinViewer } from 'skinview3d';
 import { Async } from 'react-async';
@@ -39,24 +39,54 @@ const BackgroundImage = styled.div`
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAABtJREFUGFdjfPfu3X9BQUEGxv////9///49AwBfcArIPbKUHwAAAABJRU5ErkJggg==');
 `;
 
-export default function Gridtile({ skin, display, short }: { skin: string; display: string; short: string }) {
+export default function Gridtile({
+    skin,
+    display,
+    short,
+}: {
+    skin: string | undefined;
+    display: string;
+    short: string;
+}) {
     return (
         <Link to={'/view/' + short}>
             <BackgroundImage>
-                <div css={tw`overflow-hidden bg-gray-100 font-medium text-xl text-center mx-auto w-full py-1 rounded-t-md`}>
+                <div
+                    css={tw`overflow-hidden bg-gray-100 font-medium text-xl text-center mx-auto w-full py-1 rounded-t-md`}
+                >
                     {display}
                 </div>
-                <Suspense fallback={<></>}>
-                    <Async promiseFn={() => skinImage(skin)}>
-                        {({ data, isLoading }: { data: string; isLoading: boolean }) => {
-                            return isLoading ? (
-                                <></>
-                            ) : (
-                                <img src={data} alt={'Minecraft Skin'} css={tw`max-w-full`} width={250} height={400} />
-                            );
-                        }}
-                    </Async>
-                </Suspense>
+                {skin !== undefined ? (
+                    <Suspense fallback={<></>}>
+                        <Async promiseFn={() => skinImage(skin)}>
+                            {({ data, isLoading }: { data: string; isLoading: boolean }) => {
+                                return isLoading ? (
+                                    <div
+                                        css={css`
+                                            width: 250px;
+                                            height: 400px;
+                                        `}
+                                    />
+                                ) : (
+                                    <img
+                                        src={data}
+                                        alt={'Minecraft Skin'}
+                                        css={tw`max-w-full`}
+                                        width={250}
+                                        height={400}
+                                    />
+                                );
+                            }}
+                        </Async>
+                    </Suspense>
+                ) : (
+                    <div
+                        css={css`
+                            width: 250px;
+                            height: 400px;
+                        `}
+                    />
+                )}
             </BackgroundImage>
         </Link>
     );

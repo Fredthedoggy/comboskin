@@ -23,11 +23,7 @@ export default function Home({ data }: { data: ApiData[] }) {
                                 }
                             >
                                 {({ data, isLoading }: { data: string; isLoading: boolean }) => {
-                                    return isLoading ? (
-                                        <></>
-                                    ) : (
-                                        <Gridtile skin={data} display={image.name} short={image.short} />
-                                    );
+                                    return <Gridtile skin={isLoading? undefined : data} display={image.name} short={image.short} />
                                 }}
                             </Async>
                         </Suspense>
