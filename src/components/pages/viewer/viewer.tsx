@@ -30,13 +30,16 @@ export default function Viewer({ skinDetails }: { combo: string; skinDetails: Ap
 
     return (
         <div css={tw`mx-auto my-8 h-max w-max flex flex-col md:flex-row`}>
-            {skinData && (
-                <Skinview size={{ height: 600, width: 400 }} skin={{ skinUrl: skinData, model: 'auto-detect' }} />
-            )}
+            <Skinview size={{ height: 600, width: 400 }} skin={{ skinUrl: skinData, model: 'auto-detect' }} />
             <div>
                 {inputs.map((i, id) => {
                     return (
-                        <Suspense key={i} fallback={<></>}>
+                        <Suspense
+                            key={i}
+                            fallback={
+                                <div css={tw`w-full m-4 flex flex-row content-center  py-1 px-2 h-10 rounded-md`} />
+                            }
+                        >
                             <Async
                                 promiseFn={async () =>
                                     await axios
@@ -46,7 +49,21 @@ export default function Viewer({ skinDetails }: { combo: string; skinDetails: Ap
                             >
                                 {({ data, isLoading }: { data: AxiosResponse<playerDB>; isLoading: boolean }) => {
                                     return isLoading ? (
-                                        <></>
+                                        <form
+                                            css={tw`w-full m-4 flex flex-row content-center`}
+                                            onSubmit={(event) => event.preventDefault()}
+                                        >
+                                            <input
+                                                type={'text'}
+                                                css={tw`h-10 rounded-md hover:outline-none focus:outline-none bg-gray-100 py-1 px-2`}
+                                            />
+                                            <button
+                                                type="submit"
+                                                css={tw`px-3 py-2 h-10 rounded-md bg-gray-300 hover:cursor-pointer hover:outline-none focus:outline-none ml-2`}
+                                            >
+                                                <FontAwesomeIcon icon={faSync} />
+                                            </button>
+                                        </form>
                                     ) : (
                                         <form
                                             css={tw`w-full m-4 flex flex-row content-center`}

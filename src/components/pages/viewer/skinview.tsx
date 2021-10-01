@@ -25,7 +25,7 @@ export default function Skinview({
     skin,
 }: {
     size: { height: number; width: number };
-    skin: { skinUrl: string; capeUrl?: string; model: ModelType | 'auto-detect' };
+    skin: { skinUrl?: string; capeUrl?: string; model: ModelType | 'auto-detect' };
 }) {
     const ref = React.createRef<HTMLCanvasElement>();
 
@@ -59,7 +59,7 @@ export default function Skinview({
     }, [size]);
 
     useEffect(() => {
-        skinViewer.loadSkin(skin.skinUrl);
+        if (skin.skinUrl) skinViewer.loadSkin(skin.skinUrl);
         if (skin.capeUrl) skinViewer.loadCape(skin.capeUrl);
         else skinViewer.resetCape();
     }, [skin]);
@@ -79,14 +79,25 @@ export default function Skinview({
                         <FontAwesomeIcon icon={doWalk ? faPause : faPlay} size={'2x'} />
                     </div>
                 </div>
-                <canvas
-                    ref={ref}
-                    style={{ imageRendering: 'pixelated' }}
+                <div
                     css={css`
+                        width: ${size.width};
+                        height: ${size.height};
                         max-width: 80vw;
                         max-height: calc(80vw * ${size.height / size.width});
                     `}
-                />
+                >
+                    <canvas
+                        ref={ref}
+                        style={{ imageRendering: 'pixelated' }}
+                        css={css`
+                            width: ${size.width};
+                            height: ${size.height};
+                            max-width: 80vw;
+                            max-height: calc(80vw * ${size.height / size.width});
+                        `}
+                    />
+                </div>
             </BackgroundImage>
         </div>
     );
