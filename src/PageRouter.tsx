@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { default as axios } from 'axios';
 import { decompress } from 'compress-json';
 import { ApiData } from './types';
@@ -8,21 +8,19 @@ import Navbar from './components/navbar';
 import Viewer from './components/pages/viewer/viewer';
 import Home from './components/pages/home';
 import tw from 'twin.macro';
-import FAQ from "./components/pages/FAQ";
-import Custom from "./components/pages/Custom";
-import Masks from "./components/pages/Masks";
-import ReactGA from 'react-ga';
+import FAQ from './components/pages/FAQ';
+import Custom from './components/pages/Custom';
+import Masks from './components/pages/Masks';
+import { Analytics } from './Analytics';
 
 export default function PageRouter() {
-    ReactGA.initialize('G-XLWB6G867G');
-    ReactGA.pageview(window.location.pathname + window.location.search + window.location.hash);
-
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
     useEffect(() => {
         axios.get('/data.json').then((r) => {
             setData(decompress(r.data));
         });
     }, []);
+
     const skins = [
         'f8dbbe70-0b77-44ab-8898-fe718ac81d50',
         'da8a8993-adfa-4d29-99b1-9d0f62fbb78d',
@@ -40,6 +38,7 @@ export default function PageRouter() {
     });
     return (
         <BrowserRouter>
+            <Analytics />
             <div css={tw`flex flex-col h-screen`}>
                 <Navbar />
                 {data && (

@@ -12,8 +12,10 @@ import { faDownload, faExternalLinkAlt, faSync } from '@fortawesome/free-solid-s
 import download from 'downloadjs';
 import { css } from 'styled-components';
 
+const steve =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAIRJREFUeF7t1QERADAMArHi33SFfOagHBm7+Fv8/hOABsQTQCBeAJ8gAgjEE0AgXgArgAAC8QQQiBfACiCAQDwBBOIFsAIIIBBPAIF4AawAAgjEE0AgXgArgAAC8QQQiBfACiCAQDwBBOIFsAIIIBBPAIF4AawAAgjEE0AgXgArgECdwANo2ABBrP9ggQAAAABJRU5ErkJggg==';
 export default function Viewer({ skinDetails }: { combo: string; skinDetails: ApiData }) {
-    const [skinData, setSkinData] = useState<string | undefined>('');
+    const [skinData, setSkinData] = useState<string>(steve);
     const [inputs, setInputs] = useState(
         Array.from(Array(skinDetails.amount).keys()).map((n) => localStorage.getItem('skin' + n) ?? ''),
     );
@@ -21,7 +23,10 @@ export default function Viewer({ skinDetails }: { combo: string; skinDetails: Ap
 
     useEffect(() => {
         async function effect() {
-            setSkinData(await SkinMerger(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input)));
+            setSkinData(
+                (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                    steve,
+            );
         }
 
         effect();
@@ -79,12 +84,12 @@ export default function Viewer({ skinDetails }: { combo: string; skinDetails: Ap
                                                     newVal[id] = data.data.player.id ?? '';
                                                     setInputs(newVal);
                                                     setSkinData(
-                                                        await SkinMerger(
+                                                        (await SkinMerger(
                                                             skinDetails,
                                                             ...inputs.map(
                                                                 (input) => 'https://crafatar.com/skins/' + input,
                                                             ),
-                                                        ),
+                                                        )) ?? steve,
                                                     );
                                                 } else {
                                                     alert('Error, Invalid Username / UUID');

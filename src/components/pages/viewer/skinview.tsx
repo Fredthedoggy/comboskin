@@ -25,13 +25,11 @@ export default function Skinview({
     skin,
 }: {
     size: { height: number; width: number };
-    skin: { skinUrl?: string; capeUrl?: string; model: ModelType | 'auto-detect' };
+    skin: { skinUrl: string; capeUrl?: string; model: ModelType | 'auto-detect' };
 }) {
     const ref = React.createRef<HTMLCanvasElement>();
 
     let [doWalk, setDoWalk] = useState(false);
-
-    //console.log('Updated');
 
     useEffect(() => {
         skinViewer = new SkinViewer({
@@ -59,7 +57,7 @@ export default function Skinview({
     }, [size]);
 
     useEffect(() => {
-        if (skin.skinUrl) skinViewer.loadSkin(skin.skinUrl);
+        skinViewer.loadSkin(skin.skinUrl);
         if (skin.capeUrl) skinViewer.loadCape(skin.capeUrl);
         else skinViewer.resetCape();
     }, [skin]);
