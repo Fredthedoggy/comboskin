@@ -11,8 +11,12 @@ import tw from 'twin.macro';
 import FAQ from "./components/pages/FAQ";
 import Custom from "./components/pages/Custom";
 import Masks from "./components/pages/Masks";
+import ReactGA from 'react-ga';
 
 export default function PageRouter() {
+    ReactGA.initialize('G-XLWB6G867G');
+    ReactGA.pageview(window.location.pathname + window.location.search + window.location.hash);
+
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
     useEffect(() => {
         axios.get('/data.json').then((r) => {
