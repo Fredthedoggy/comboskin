@@ -3,15 +3,17 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { default as axios } from 'axios';
 import { decompress } from 'compress-json';
 import { ApiData } from './types';
-import Settings from './components/pages/settings';
 import Navbar from './components/navbar';
 import Viewer from './components/pages/viewer/viewer';
 import Home from './components/pages/home';
 import tw from 'twin.macro';
-import FAQ from './components/pages/FAQ';
 import Custom from './components/pages/Custom';
 import Masks from './components/pages/Masks';
 import { Analytics } from './Analytics';
+import FAQ from './components/pages/faq/FAQ';
+import Settings from './components/pages/settings/settings';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 export default function PageRouter() {
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
@@ -36,18 +38,19 @@ export default function PageRouter() {
     Array.from(Array(10).keys()).forEach((n) => {
         if (!localStorage.getItem('skin' + n)) localStorage.setItem('skin' + n, skins[n]);
     });
+    const [uuid, setUuid] = useState(localStorage.getItem('skin0') ?? 'f8dbbe70-0b77-44ab-8898-fe718ac81d50');
     return (
         <BrowserRouter>
             <Analytics />
             <div css={tw`flex flex-col h-screen`}>
-                <Navbar />
+                <Navbar uuid={uuid} />
                 {data && (
                     <Switch>
                         <Route path={'/'} exact>
                             <Home data={data} />
                         </Route>
                         <Route path={'/settings'}>
-                            <Settings />
+                            <Settings setUuid={setUuid} />
                         </Route>
                         <Route path={'/faq'}>
                             <FAQ />
@@ -77,6 +80,13 @@ export default function PageRouter() {
                             © Copyright 2021{new Date().getFullYear() !== 2021 ? ' - ' + new Date().getFullYear() : ''}
                             &nbsp;Fredthedoggy
                         </span>
+                        <a css={tw`absolute right-0`} href={'https://discord.gg/Ssem4bQMZz'}>
+                            <span css={tw`w-14 h-14 flex`}>
+                                <span css={tw`m-auto`}>
+                                    <FontAwesomeIcon icon={faDiscord} size={'lg'} />
+                                </span>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>

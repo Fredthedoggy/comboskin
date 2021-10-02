@@ -5,12 +5,12 @@ import { Async } from 'react-async';
 import tw from 'twin.macro';
 import Skinview from './skinview';
 import axios, { AxiosResponse } from 'axios';
-import { playerDB } from '../settings';
 import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faExternalLinkAlt, faSync } from '@fortawesome/free-solid-svg-icons';
 import download from 'downloadjs';
 import { css } from 'styled-components';
+import {playerDB} from "../settings/settings";
 
 const steve =
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAIRJREFUeF7t1QERADAMArHi33SFfOagHBm7+Fv8/hOABsQTQCBeAJ8gAgjEE0AgXgArgAAC8QQQiBfACiCAQDwBBOIFsAIIIBBPAIF4AawAAgjEE0AgXgArgAAC8QQQiBfACiCAQDwBBOIFsAIIIBBPAIF4AawAAgjEE0AgXgArgECdwANo2ABBrP9ggQAAAABJRU5ErkJggg==';

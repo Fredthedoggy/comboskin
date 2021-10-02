@@ -6,7 +6,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { NavElement } from './NavElement';
 
-export default function Navbar() {
+export default function Navbar({ uuid }: { uuid: string }) {
     const [showSearchBar, setShowSearchBar] = useState(false);
 
     return (
@@ -39,10 +39,7 @@ export default function Navbar() {
                         <div css={tw`m-auto object-scale-down w-14 h-14 flex content-center`}>
                             <img
                                 alt={'User Icon'}
-                                src={
-                                    'https://crafatar.com/avatars/' +
-                                    (localStorage.getItem('skin0') ?? 'f8dbbe70-0b77-44ab-8898-fe718ac81d50')
-                                }
+                                src={'https://crafatar.com/avatars/' + uuid}
                                 css={tw`rounded-sm h-8 w-8 m-auto`}
                             />
                         </div>

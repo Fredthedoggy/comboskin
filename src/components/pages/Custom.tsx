@@ -1,8 +1,14 @@
+import tw from 'twin.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilRuler } from '@fortawesome/free-solid-svg-icons';
+
 export default function Custom() {
     return (
-        <div>
-            Want to make a custom combo?
-            <div>Create a MC skin with 2 - 10 colors, each representing a different skin in the combo.</div>
+        <div css={tw`m-3 mx-auto my-auto flex flex-col`}>
+            <span css={tw`text-center mx-auto`}>
+                <FontAwesomeIcon icon={faPencilRuler} size={'4x'} />
+            </span>
+            <span css={tw`text-center mx-auto font-medium text-2xl`}>Coming Soon™</span>
         </div>
     );
 }

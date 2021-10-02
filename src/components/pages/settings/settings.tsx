@@ -1,15 +1,15 @@
-import React, { Suspense } from 'react';
 import tw from 'twin.macro';
-import axios, { AxiosResponse } from 'axios';
+import React, { Suspense } from 'react';
 import { Async } from 'react-async';
-import { Input } from './Input';
+import axios, { AxiosResponse } from 'axios';
+import { SettingsRow } from './settingsRow';
 
 export interface playerDB {
     data: { player: { username?: string; id?: string } };
     success: boolean;
 }
 
-export default function Settings() {
+export default function Settings({ setUuid }: { setUuid: (uuid: string) => void }) {
     return (
         <div css={tw`p-4 mt-10 w-max mx-auto bg-gray-200 rounded-lg`}>
             {[
@@ -37,16 +37,10 @@ export default function Settings() {
                                 return isLoading ? (
                                     <></>
                                 ) : (
-                                    <Input
-                                        display={type.display}
-                                        name={type.name}
-                                        uuid={data.data.data.player.id ?? ''}
-                                        initial={
-                                            (data.data.success
-                                                ? data.data.data.player.username
-                                                : 'da8a8993-adfa-4d29-99b1-9d0f62fbb78d') ??
-                                            'da8a8993-adfa-4d29-99b1-9d0f62fbb78d'
-                                        }
+                                    <SettingsRow
+                                        type={type}
+                                        data={data.data}
+                                        setNavbarUuid={type.name === 'skin0' ? setUuid : undefined}
                                     />
                                 );
                             }}
@@ -57,4 +51,3 @@ export default function Settings() {
         </div>
     );
 }
-

@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import tw from 'twin.macro';
 import axios from 'axios';
 import { css } from 'styled-components';
-import { playerDB } from './settings';
+import {playerDB} from "./settings/settings";
 
 export function Input({
     initial,
     name,
     display,
     uuid,
+    setUUID,
 }: {
     initial: string;
     name: string;
     display: string;
     uuid: string;
+    setUUID: (uuid: string) => void;
 }) {
     const [value, setValue] = useState(initial);
     let textInput = React.createRef<HTMLInputElement>();
@@ -31,7 +33,8 @@ export function Input({
                 ).data;
                 if (data.success) {
                     localStorage.setItem(name, data.data.player.id!);
-                    window.location.reload();
+                    setUUID(data.data.player.id!);
+                    //window.location.reload();
                 } else {
                     alert('Error, Invalid Username / UUID');
                 }
