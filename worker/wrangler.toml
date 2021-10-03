@@ -1,6 +1,0 @@
-name = "combo-api"
-type = "webpack"
-account_id = "91aef47cf35606d7cf23ec823297834e"
-
-workers_dev = true
-compatibility_date = "2021-09-29"
