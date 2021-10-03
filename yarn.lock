@@ -1798,6 +1798,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@south-paw/typeface-minecraft@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@south-paw/typeface-minecraft/-/typeface-minecraft-1.0.0.tgz#adaff9faf70e733150bf9b75ad7098bb6ad6a6f7"
+  integrity sha512-wt58ifXAyBZ23qcPd8qcyRCbZVCcJX3E84LLHvmHL+b91HxF7nKtBIlv47uIgHRCrm7TWVRP1Z2r3zck6w3EuQ==
+
 "@surma/rollup-plugin-off-main-thread@^1.1.1":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-1.4.2.tgz#e6786b6af5799f82f7ab3a82e53f6182d2b91a58"

@@ -52,9 +52,11 @@ export default function Gridtile({
         <Link to={'/view/' + short}>
             <BackgroundImage>
                 <div
-                    css={tw`overflow-hidden bg-gray-100 font-medium text-xl text-center mx-auto w-full py-1 rounded-t-md`}
+                    css={tw`overflow-hidden bg-gray-100 font-medium text-lg text-center mx-auto w-full py-1 rounded-t-md`}
                 >
+                    <span css={tw`mx-3`}>
                     {display}
+                        </span>
                 </div>
                 {skin !== undefined ? (
                     <Suspense fallback={<></>}>

@@ -1,19 +1,19 @@
 [
     {
         "short": "2lr",
-        "name": "Two Left/Right",
+        "name": "Left/Right",
         "image": "two-lr.png",
         "amount": 2
     },
     {
         "short": "2inside",
-        "name": "Two Inside Eachother",
+        "name": "Two Inside",
         "image": "two-inside.png",
         "amount": 2
     },
     {
         "short": "3tmb",
-        "name": "Three Top/Mid/Bottom",
+        "name": "Three Stacked",
         "image": "three-tmb.png",
         "amount": 3
     },

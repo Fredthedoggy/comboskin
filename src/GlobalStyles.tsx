@@ -6,6 +6,7 @@ const CustomStyles = createGlobalStyle`
   body {
     -webkit-tap-highlight-color: #743b86;
     ${tw`antialiased`}
+    font-family: "Minecraft";
   }
 `;
 
