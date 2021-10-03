@@ -1,82 +1,81 @@
 {
-    "name": "comboskin",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@babel/core": "^7.15.5",
-        "@babel/plugin-transform-react-jsx": "^7.14.9",
-        "@fortawesome/fontawesome-svg-core": "^1.2.36",
-        "@fortawesome/free-brands-svg-icons": "^5.15.4",
-        "@fortawesome/free-solid-svg-icons": "^5.15.4",
-        "@fortawesome/react-fontawesome": "^0.1.15",
-        "@south-paw/typeface-minecraft": "^1.0.0",
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
-        "@types/downloadjs": "^1.4.2",
-        "@types/jest": "^26.0.15",
-        "@types/node": "^12.0.0",
-        "@types/react": "^17.0.21",
-        "@types/react-dom": "^17.0.0",
-        "@types/react-router": "^5.1.16",
-        "@types/react-router-dom": "^5.3.0",
-        "@types/three": "^0.132.0",
-        "axios": "^0.22.0",
-        "canvas": "^2.8.0",
-        "compress-json": "^1.0.4",
-        "downloadjs": "^1.4.7",
-        "mcdata": "^1.0.9",
-        "prism-react-renderer": "^1.2.1",
-        "react": "^17.0.2",
-        "react-async": "^10.0.1",
-        "react-dom": "^17.0.2",
-        "react-ga4": "^1.0.6",
-        "react-hook-form": "^7.16.0",
-        "react-router": "^5.2.1",
-        "react-router-dom": "^5.3.0",
-        "react-scripts": "^4.0.3",
-        "react-simple-code-editor": "^0.11.0",
-        "skinview3d": "^2.0.3",
-        "styled-components": "^5.3.1",
-        "tailwindcss": "^2.2.15",
-        "three": "^0.132.2",
-        "twin.macro": "^2.7.0",
-        "typescript": "^4.1.2",
-        "web-vitals": "^1.0.1"
-    },
-    "scripts": {
-        "data": "node merger/merge.js",
-        "start": "yarn data && react-scripts start",
-        "build": "yarn data && react-scripts build",
-        "eject": "react-scripts eject",
-        "overlay": "node overlaycreator/create.js",
-        "worker": "tsc src/SkinMerger.ts -outDir worker/ --module CommonJS"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "babelMacros": {
-        "twin": {
-            "preset": "styled-components"
-        }
-    },
-    "devDependencies": {
-        "@types/styled-components": "^5.1.14",
-        "prettier": "2.4.1"
+  "name": "comboskin",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
+    "@south-paw/typeface-minecraft": "^1.0.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/downloadjs": "^1.4.2",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.21",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router": "^5.1.16",
+    "@types/react-router-dom": "^5.3.0",
+    "@types/three": "^0.132.0",
+    "axios": "^0.22.0",
+    "canvas": "^2.8.0",
+    "compress-json": "^1.0.4",
+    "downloadjs": "^1.4.7",
+    "mcdata": "^1.0.9",
+    "prism-react-renderer": "^1.2.1",
+    "react": "^17.0.2",
+    "react-async": "^10.0.1",
+    "react-dom": "^17.0.2",
+    "react-ga4": "^1.0.6",
+    "react-hook-form": "^7.16.0",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "^4.0.3",
+    "react-simple-code-editor": "^0.11.0",
+    "skinview3d": "^2.0.3",
+    "styled-components": "^5.3.1",
+    "tailwindcss": "^2.2.15",
+    "three": "^0.132.2",
+    "twin.macro": "^2.7.0",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "data": "node merger/merge.js",
+    "start": "yarn data && react-scripts start",
+    "build": "yarn data && react-scripts build",
+    "eject": "react-scripts eject",
+    "overlay": "node overlaycreator/create.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
     }
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.14",
+    "prettier": "2.4.1"
+  }
 }
