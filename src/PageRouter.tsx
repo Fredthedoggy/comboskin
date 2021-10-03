@@ -2,12 +2,14 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { default as axios } from 'axios';
 import { decompress } from 'compress-json';
-import { ApiData } from './types';
+import { ComboAPI } from './types';
 import Navbar from './components/navbar';
 import tw from 'twin.macro';
 import { Analytics } from './Analytics';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { customMarkup } from './effects/small';
+import OtherViewer from "./components/pages/viewer/other";
 
 const Settings = React.lazy(() => import('./components/pages/settings/settings'));
 const OtherPage = React.lazy(() => import('./components/pages/custom/OtherPage'));
@@ -20,10 +22,14 @@ const Viewer = React.lazy(() => import('./components/pages/viewer/viewer'));
 const CustomPage = React.lazy(() => import('./components/pages/custom/CustomPage'));
 
 export default function PageRouter() {
-    const [data, setData] = useState<ApiData[] | undefined>(undefined);
+    const [comboData, setComboData] = useState<ComboAPI[] | undefined>(undefined);
+    const [otherData, setOtherData] = useState<customMarkup[] | undefined>(undefined);
+
     useEffect(() => {
         axios.get('/data.json').then((r) => {
-            setData(decompress(r.data));
+            const data = decompress(r.data);
+            setComboData(data.combo);
+            setOtherData(data.other);
         });
     }, []);
 
@@ -48,11 +54,11 @@ export default function PageRouter() {
             <Analytics />
             <div css={tw`flex flex-col h-screen`}>
                 <Navbar uuid={uuid} />
-                {data && (
+                {comboData && otherData && (
                     <Switch>
                         <Route path={'/'} exact>
                             <Suspense fallback={<></>}>
-                                <Home data={data} />
+                                <Home data={comboData} />
                             </Suspense>
                         </Route>
                         <Route path={'/settings'} exact>
@@ -87,17 +93,36 @@ export default function PageRouter() {
                         </Route>
                         <Route path={'/other'} exact>
                             <Suspense fallback={<></>}>
-                                <Other />
+                                {() => {
+                                    console.log(otherData)
+                                    return <></>
+                                }}
+                                <Other data={otherData} />
                             </Suspense>
                         </Route>
                         <Route
                             path={'/view/:combo'}
                             render={({ match }) => {
                                 const combo = match.params.combo;
-                                const interData = data.filter((d) => d.short === combo)[0];
+                                const interData = comboData.filter((d) => d.short === combo)[0];
                                 return interData ? (
                                     <Suspense fallback={<></>}>
                                         <Viewer combo={combo} skinDetails={interData} />
+                                    </Suspense>
+                                ) : (
+                                    <>404</>
+                                );
+                            }}
+                            exact
+                        />
+                        <Route
+                            path={'/other/:other'}
+                            render={({ match }) => {
+                                const other = match.params.other;
+                                const interData = otherData.filter((d) => d.short === other)[0];
+                                return interData ? (
+                                    <Suspense fallback={<></>}>
+                                        <OtherViewer skinDetails={interData}  other={other}/>
                                     </Suspense>
                                 ) : (
                                     <>404</>

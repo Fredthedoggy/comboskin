@@ -3,10 +3,12 @@ const { createCanvas, loadImage } = require('canvas');
 const { compress } = require('compress-json');
 
 const merges = JSON.parse(fs.readFileSync('merger/merges.json').toString());
+const others = fs.readdirSync('merger/other');
 
 async function merge() {
     if (fs.existsSync('public/data.json')) await fs.rmSync('public/data.json');
     const globalImages = [];
+    const globalOthers = []
 
     for (let i = 0; i < merges.length; i++) {
         const colors = {};
@@ -37,7 +39,11 @@ async function merge() {
         };
     }
 
-    fs.writeFileSync('public/data.json', Buffer.from(JSON.stringify(compress(globalImages))));
+    for (let i = 0; i < others.length; i++) {
+        globalOthers[globalOthers.length] = JSON.parse(fs.readFileSync('merger/other/' + others[i]).toString());
+    }
+
+    fs.writeFileSync('public/data.json', Buffer.from(JSON.stringify(compress({ combo: globalImages, other: globalOthers }))));
 }
 
 function rgbToHex(r, g, b, a) {

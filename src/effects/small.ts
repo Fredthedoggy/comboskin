@@ -1,5 +1,8 @@
 export interface customMarkup {
     skins: number;
+    author?: string
+    name?: string
+    short?: string
     ranges: {
         skin: number;
         start: {

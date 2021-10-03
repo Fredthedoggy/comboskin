@@ -1,4 +1,4 @@
-export interface ApiData {
+export interface ComboAPI {
     short: string;
     name: string;
     image: number[][];

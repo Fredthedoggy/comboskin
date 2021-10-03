@@ -1,11 +1,11 @@
 import SkinMerger from '../../../SkinMerger';
-import { ApiData } from '../../../types';
+import { ComboAPI } from '../../../types';
 import React, { useEffect, useState } from 'react';
 import ViewPage from '../../ViewPage';
 
 const steve =
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAIRJREFUeF7t1QERADAMArHi33SFfOagHBm7+Fv8/hOABsQTQCBeAJ8gAgjEE0AgXgArgAAC8QQQiBfACiCAQDwBBOIFsAIIIBBPAIF4AawAAgjEE0AgXgArgAAC8QQQiBfACiCAQDwBBOIFsAIIIBBPAIF4AawAAgjEE0AgXgArgECdwANo2ABBrP9ggQAAAABJRU5ErkJggg==';
-export default function Viewer({ skinDetails }: { combo: string; skinDetails: ApiData }) {
+export default function Viewer({ skinDetails }: { combo: string; skinDetails: ComboAPI }) {
     const [skinData, setSkinData] = useState<string>(steve);
 
     const [inputs, setInputs] = useState(
@@ -32,6 +32,7 @@ export default function Viewer({ skinDetails }: { combo: string; skinDetails: Ap
                         steve,
                 );
             }}
+            name={skinDetails.name}
             inputs={inputs}
             setInputs={setInputs}
             skinData={skinData}

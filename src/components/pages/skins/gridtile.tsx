@@ -43,20 +43,20 @@ export default function Gridtile({
     skin,
     display,
     short,
+    to,
 }: {
     skin: string | undefined;
     display: string;
     short: string;
+    to: string;
 }) {
     return (
-        <Link to={'/view/' + short}>
+        <Link to={'/' + to + '/' + short}>
             <BackgroundImage>
                 <div
                     css={tw`overflow-hidden bg-gray-100 font-medium text-lg text-center mx-auto w-full py-1 rounded-t-md`}
                 >
-                    <span css={tw`mx-3`}>
-                    {display}
-                        </span>
+                    <span css={tw`mx-3`}>{display}</span>
                 </div>
                 {skin !== undefined ? (
                     <Suspense fallback={<></>}>
