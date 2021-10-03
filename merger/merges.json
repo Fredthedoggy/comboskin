@@ -22,5 +22,11 @@
         "name": "Four Corners",
         "image": "four-lbltrbrt.png",
         "amount": 4
+    },
+    {
+        "short": "2fb",
+        "name": "Front/Back",
+        "image": "two-fb.png",
+        "amount": 2
     }
 ]
