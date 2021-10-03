@@ -1,3 +1,5 @@
+import {enlargeUri} from "./skinEnlarger";
+
 export interface customMarkup {
     skins: number;
     author?: string
@@ -24,7 +26,7 @@ export interface customMarkup {
     }[];
 }
 
-export default async function small(custom: customMarkup, ...skins: string[]) {
+export default async function otherMerge(custom: customMarkup, ...skins: string[]) {
     const canvas = document.createElement('canvas');
     canvas.width = 64;
     canvas.height = 64;
@@ -32,7 +34,7 @@ export default async function small(custom: customMarkup, ...skins: string[]) {
     for (let i = 0; i < 2; i++) {
         const image = new Image();
         image.crossOrigin = 'anonymous';
-        image.src = skins[i];
+        image.src = await enlargeUri(skins[i]);
         await new Promise((resolve) => {
             image.onload = loaded;
 

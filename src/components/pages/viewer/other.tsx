@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ViewPage from '../../ViewPage';
-import small, {customMarkup} from "../../../effects/small";
+import otherMerge, {customMarkup} from "../../../effects/otherMerge";
 
 const steve =
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAIRJREFUeF7t1QERADAMArHi33SFfOagHBm7+Fv8/hOABsQTQCBeAJ8gAgjEE0AgXgArgAAC8QQQiBfACiCAQDwBBOIFsAIIIBBPAIF4AawAAgjEE0AgXgArgAAC8QQQiBfACiCAQDwBBOIFsAIIIBBPAIF4AawAAgjEE0AgXgArgECdwANo2ABBrP9ggQAAAABJRU5ErkJggg==';
@@ -14,7 +14,7 @@ export default function OtherViewer({ skinDetails }: { other: string; skinDetail
     useEffect(() => {
         async function effect() {
             setSkinData(
-                (await small(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                (await otherMerge(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
                 steve,
             );
         }
@@ -27,7 +27,7 @@ export default function OtherViewer({ skinDetails }: { other: string; skinDetail
         <ViewPage
             updateSkin={async () => {
                 setSkinData(
-                    (await small(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                    (await otherMerge(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
                     steve,
                 );
             }}

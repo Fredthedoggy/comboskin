@@ -1,3 +1,5 @@
+import {enlargeCanvas} from "./effects/skinEnlarger";
+
 export default async function SkinMerger(
     apply: {
         image: Record<number, Record<number, number>>;
@@ -14,7 +16,7 @@ export default async function SkinMerger(
     canvas.height = 64;
     const skinEls: HTMLCanvasElement[] = [];
     for (let i = 0; i < apply.amount; i++) {
-        const skinCanvas = document.createElement('canvas');
+        let skinCanvas = document.createElement('canvas');
         skinCanvas.width = 64;
         skinCanvas.height = 64;
         const image = new Image();
@@ -28,20 +30,7 @@ export default async function SkinMerger(
             }
         });
         skinCanvas.getContext('2d')?.drawImage(image, 0, 0, image.width, image.height);
-        if (image.height === 32) {
-            const context = skinCanvas.getContext('2d');
-            if (!context) continue;
-            for (let x = 0; x < 16; x++) {
-                for (let y = 16; y < 32; y++) {
-                    context.putImageData(context.getImageData(x, y, 1, 1), x + 16, y + 32);
-                }
-            }
-            for (let x = 40; x < 56; x++) {
-                for (let y = 16; y < 32; y++) {
-                    context.putImageData(context.getImageData(x, y, 1, 1), x - 8, y + 32);
-                }
-            }
-        }
+        skinCanvas = enlargeCanvas(skinCanvas, image)!;
         skinEls[skinEls.length] = skinCanvas;
     }
     const context = canvas.getContext('2d');

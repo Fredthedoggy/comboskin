@@ -2,7 +2,7 @@ import tw from 'twin.macro';
 import React, { Suspense } from 'react';
 import { Async } from 'react-async';
 import Gridtile from './skins/gridtile';
-import small, {customMarkup} from "../../effects/small";
+import otherMerge, {customMarkup} from "../../effects/otherMerge";
 
 export default function Other({ data }: { data: customMarkup[] }) {
     return (
@@ -13,7 +13,7 @@ export default function Other({ data }: { data: customMarkup[] }) {
                         <Suspense fallback={<></>}>
                             <Async
                                 promiseFn={async () =>
-                                    (await small(
+                                    (await otherMerge(
                                         image,
                                         ...Array.from(Array(image.skins).keys()).map(
                                             (n) => 'https://crafatar.com/skins/' + localStorage.getItem('skin' + n),

@@ -8,7 +8,7 @@ import tw from 'twin.macro';
 import { Analytics } from './Analytics';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { customMarkup } from './effects/small';
+import { customMarkup } from './effects/otherMerge';
 
 const Settings = React.lazy(() => import('./components/pages/settings/settings'));
 const OtherPage = React.lazy(() => import('./components/pages/custom/OtherPage'));
