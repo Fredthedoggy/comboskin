@@ -15,6 +15,7 @@ import Settings from './components/pages/settings/settings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import CustomPage from "./components/pages/custom/CustomPage";
+import Other from "./components/pages/other";
 
 export default function PageRouter() {
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
@@ -59,11 +60,14 @@ export default function PageRouter() {
                         <Route path={'/custom'} exact>
                             <Custom />
                         </Route>
-                        <Route path={'/custom/edit'} exact>
+                        <Route path={'/custom/other'} exact>
                             <CustomPage />
                         </Route>
                         <Route path={'/masks'} exact>
                             <Masks />
+                        </Route>
+                        <Route path={'/other'} exact>
+                            <Other />
                         </Route>
                         <Route
                             path={'/view/:combo'}
