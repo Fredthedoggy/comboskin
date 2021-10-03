@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { default as axios } from 'axios';
 import { decompress } from 'compress-json';
@@ -51,35 +51,57 @@ export default function PageRouter() {
                 {data && (
                     <Switch>
                         <Route path={'/'} exact>
-                            <Home data={data} />
+                            <Suspense fallback={<></>}>
+                                <Home data={data} />
+                            </Suspense>
                         </Route>
                         <Route path={'/settings'} exact>
-                            <Settings setUuid={setUuid} />
+                            <Suspense fallback={<></>}>
+                                <Settings setUuid={setUuid} />
+                            </Suspense>
                         </Route>
                         <Route path={'/faq'} exact>
-                            <FAQ />
+                            <Suspense fallback={<></>}>
+                                <FAQ />
+                            </Suspense>
                         </Route>
                         <Route path={'/custom'} exact>
-                            <Custom />
+                            <Suspense fallback={<></>}>
+                                <Custom />
+                            </Suspense>
                         </Route>
                         <Route path={'/custom/other'} exact>
-                            <OtherPage />
+                            <Suspense fallback={<></>}>
+                                <OtherPage />
+                            </Suspense>
                         </Route>
                         <Route path={'/custom/combo'} exact>
-                            <CustomPage />
+                            <Suspense fallback={<></>}>
+                                <CustomPage />
+                            </Suspense>
                         </Route>
                         <Route path={'/masks'} exact>
-                            <Masks />
+                            <Suspense fallback={<></>}>
+                                <Masks />
+                            </Suspense>
                         </Route>
                         <Route path={'/other'} exact>
-                            <Other />
+                            <Suspense fallback={<></>}>
+                                <Other />
+                            </Suspense>
                         </Route>
                         <Route
                             path={'/view/:combo'}
                             render={({ match }) => {
                                 const combo = match.params.combo;
                                 const interData = data.filter((d) => d.short === combo)[0];
-                                return interData ? <Viewer combo={combo} skinDetails={interData} /> : <>404</>;
+                                return interData ? (
+                                    <Suspense fallback={<></>}>
+                                        <Viewer combo={combo} skinDetails={interData} />
+                                    </Suspense>
+                                ) : (
+                                    <>404</>
+                                );
                             }}
                             exact
                         />
