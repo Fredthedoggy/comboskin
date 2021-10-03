@@ -1,8 +1,12 @@
-import { ApiData } from './types';
-
-export default async function SkinMerger(apply: ApiData, ...skins: string[]) {
+export default async function SkinMerger(
+    apply: {
+        image: Record<number, Record<number, number>>;
+        amount: number;
+    },
+    ...skins: string[]
+) {
     if (skins.length < apply.amount) {
-        console.error('Too Few Arguments')
+        console.error('Too Few Arguments');
         throw new Error('Too Few Arguments');
     }
     const canvas = document.createElement('canvas');

@@ -14,8 +14,9 @@ import FAQ from './components/pages/faq/FAQ';
 import Settings from './components/pages/settings/settings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import CustomPage from "./components/pages/custom/CustomPage";
+import OtherPage from "./components/pages/custom/OtherPage";
 import Other from "./components/pages/other";
+import CustomPage from "./components/pages/custom/CustomPage";
 
 export default function PageRouter() {
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
@@ -61,6 +62,9 @@ export default function PageRouter() {
                             <Custom />
                         </Route>
                         <Route path={'/custom/other'} exact>
+                            <OtherPage />
+                        </Route>
+                        <Route path={'/custom/combo'} exact>
                             <CustomPage />
                         </Route>
                         <Route path={'/masks'} exact>
