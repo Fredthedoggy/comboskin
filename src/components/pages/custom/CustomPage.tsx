@@ -110,6 +110,7 @@ export default function CustomPage() {
             )}
             {image && skinData && (
                 <ViewPage
+                    name={'Custom Skin'}
                     skinData={image}
                     updateSkin={async () => {
                         setImage(

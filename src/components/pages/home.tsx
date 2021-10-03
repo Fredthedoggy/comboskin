@@ -1,11 +1,11 @@
-import { ApiData } from '../../types';
+import { ComboAPI } from '../../types';
 import tw from 'twin.macro';
 import React, { Suspense } from 'react';
 import { Async } from 'react-async';
 import SkinMerger from '../../SkinMerger';
 import Gridtile from './skins/gridtile';
 
-export default function Home({ data }: { data: ApiData[] }) {
+export default function Home({ data }: { data: ComboAPI[] }) {
     return (
         <div css={tw`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 m-6`}>
             {data.map((image) => {
@@ -23,7 +23,7 @@ export default function Home({ data }: { data: ApiData[] }) {
                                 }
                             >
                                 {({ data, isLoading }: { data: string; isLoading: boolean }) => {
-                                    return <Gridtile skin={isLoading? undefined : data} display={image.name} short={image.short} />
+                                    return <Gridtile skin={isLoading? undefined : data} display={image.name} short={image.short} to={'view'} />
                                 }}
                             </Async>
                         </Suspense>
