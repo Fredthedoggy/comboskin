@@ -4,19 +4,20 @@ import { default as axios } from 'axios';
 import { decompress } from 'compress-json';
 import { ApiData } from './types';
 import Navbar from './components/navbar';
-import Viewer from './components/pages/viewer/viewer';
-import Home from './components/pages/home';
 import tw from 'twin.macro';
-import Custom from './components/pages/custom/Custom';
-import Masks from './components/pages/Masks';
 import { Analytics } from './Analytics';
-import FAQ from './components/pages/faq/FAQ';
-import Settings from './components/pages/settings/settings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import OtherPage from "./components/pages/custom/OtherPage";
-import Other from "./components/pages/other";
-import CustomPage from "./components/pages/custom/CustomPage";
+
+const Settings = React.lazy(() => import('./components/pages/settings/settings'));
+const OtherPage = React.lazy(() => import('./components/pages/custom/OtherPage'));
+const Other = React.lazy(() => import('./components/pages/other'));
+const FAQ = React.lazy(() => import('./components/pages/faq/FAQ'));
+const Masks = React.lazy(() => import('./components/pages/Masks'));
+const Custom = React.lazy(() => import('./components/pages/custom/Custom'));
+const Home = React.lazy(() => import('./components/pages/home'));
+const Viewer = React.lazy(() => import('./components/pages/viewer/viewer'));
+const CustomPage = React.lazy(() => import('./components/pages/custom/CustomPage'));
 
 export default function PageRouter() {
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
