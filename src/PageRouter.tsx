@@ -9,11 +9,11 @@ import { Analytics } from './Analytics';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { customMarkup } from './effects/small';
-import OtherViewer from "./components/pages/viewer/other";
 
 const Settings = React.lazy(() => import('./components/pages/settings/settings'));
 const OtherPage = React.lazy(() => import('./components/pages/custom/OtherPage'));
 const Other = React.lazy(() => import('./components/pages/other'));
+const OtherViewer = React.lazy(() => import('./components/pages/viewer/other'));
 const FAQ = React.lazy(() => import('./components/pages/faq/FAQ'));
 const Masks = React.lazy(() => import('./components/pages/Masks'));
 const Custom = React.lazy(() => import('./components/pages/custom/Custom'));
