@@ -7,13 +7,14 @@ import Navbar from './components/navbar';
 import Viewer from './components/pages/viewer/viewer';
 import Home from './components/pages/home';
 import tw from 'twin.macro';
-import Custom from './components/pages/Custom';
+import Custom from './components/pages/custom/Custom';
 import Masks from './components/pages/Masks';
 import { Analytics } from './Analytics';
 import FAQ from './components/pages/faq/FAQ';
 import Settings from './components/pages/settings/settings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import CustomPage from "./components/pages/custom/CustomPage";
 
 export default function PageRouter() {
     const [data, setData] = useState<ApiData[] | undefined>(undefined);
@@ -49,16 +50,19 @@ export default function PageRouter() {
                         <Route path={'/'} exact>
                             <Home data={data} />
                         </Route>
-                        <Route path={'/settings'}>
+                        <Route path={'/settings'} exact>
                             <Settings setUuid={setUuid} />
                         </Route>
-                        <Route path={'/faq'}>
+                        <Route path={'/faq'} exact>
                             <FAQ />
                         </Route>
-                        <Route path={'/custom'}>
+                        <Route path={'/custom'} exact>
                             <Custom />
                         </Route>
-                        <Route path={'/masks'}>
+                        <Route path={'/custom/edit'} exact>
+                            <CustomPage />
+                        </Route>
+                        <Route path={'/masks'} exact>
                             <Masks />
                         </Route>
                         <Route
@@ -68,6 +72,7 @@ export default function PageRouter() {
                                 const interData = data.filter((d) => d.short === combo)[0];
                                 return interData ? <Viewer combo={combo} skinDetails={interData} /> : <>404</>;
                             }}
+                            exact
                         />
                         <Route path={'*'}>
                             <div>404</div>
