@@ -67,7 +67,7 @@ export default function Skinview({
     }, [doWalk]);
 
     return (
-        <div>
+        <div css={tw`mx-auto`}>
             <BackgroundImage>
                 <div
                     onClick={() => setDoWalk(!doWalk)}
