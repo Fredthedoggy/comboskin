@@ -28,5 +28,23 @@
         "name": "Front/Back",
         "image": "two-fb.png",
         "amount": 2
+    },
+    {
+        "short": "6p",
+        "name": "All Parts",
+        "image": "size-parts.png",
+        "amount": 6
+    },
+    {
+        "short": "2oi",
+        "name": "Skin/Overlay",
+        "image": "two-oi.png",
+        "amount": 2
+    },
+    {
+        "short": "2tb",
+        "name": "Top/Bottom",
+        "image": "two-tb.png",
+        "amount": 2
     }
 ]
