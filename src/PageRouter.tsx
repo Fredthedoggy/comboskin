@@ -7,7 +7,7 @@ import Navbar from './components/navbar';
 import tw from 'twin.macro';
 import { Analytics } from './Analytics';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faGithub, faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { customMarkup } from './effects/otherMerge';
 
 const Settings = React.lazy(() => import('./components/pages/settings/settings'));
@@ -94,8 +94,8 @@ export default function PageRouter() {
                         <Route path={'/other'} exact>
                             <Suspense fallback={<></>}>
                                 {() => {
-                                    console.log(otherData)
-                                    return <></>
+                                    console.log(otherData);
+                                    return <></>;
                                 }}
                                 <Other data={otherData} />
                             </Suspense>
@@ -122,7 +122,7 @@ export default function PageRouter() {
                                 const interData = otherData.filter((d) => d.short === other)[0];
                                 return interData ? (
                                     <Suspense fallback={<></>}>
-                                        <OtherViewer skinDetails={interData}  other={other}/>
+                                        <OtherViewer skinDetails={interData} other={other} />
                                     </Suspense>
                                 ) : (
                                     <>404</>
@@ -141,13 +141,26 @@ export default function PageRouter() {
                             © Copyright 2021{new Date().getFullYear() !== 2021 ? ' - ' + new Date().getFullYear() : ''}
                             &nbsp;Fredthedoggy
                         </span>
-                        <a css={tw`absolute right-0`} href={'https://discord.gg/Ssem4bQMZz'}>
-                            <span css={tw`w-14 h-14 flex`}>
-                                <span css={tw`m-auto`}>
+                        <div css={tw`absolute right-2`}>
+                            <span css={tw`w-24 h-14 flex`}>
+                                <a
+                                    href={'https://discord.gg/Ssem4bQMZz'}
+                                    target={'_blank'}
+                                    rel={'noreferrer'}
+                                    css={tw`m-auto`}
+                                >
                                     <FontAwesomeIcon icon={faDiscord} size={'lg'} />
-                                </span>
+                                </a>
+                                <a
+                                    href={'https://github.com/Fredthedoggy/comboskin'}
+                                    target={'_blank'}
+                                    rel={'noreferrer'}
+                                    css={tw`m-auto`}
+                                >
+                                    <FontAwesomeIcon icon={faGithubSquare} size={'2x'} />
+                                </a>
                             </span>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
