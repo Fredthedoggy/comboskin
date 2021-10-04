@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import Skinview from './pages/viewer/skinview';
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Async } from 'react-async';
 import axios, { AxiosResponse } from 'axios';
 import { playerDB } from './pages/settings/settings';
@@ -26,6 +26,7 @@ export default function ViewPage({
     name: string;
 }) {
     const { register, handleSubmit } = useForm();
+    const [copied, setCopied] = useState<string>('Share');
 
     return (
         <div css={tw`flex flex-col mt-8`}>
@@ -164,6 +165,29 @@ export default function ViewPage({
                             </span>
                             Apply&nbsp;
                             <FontAwesomeIcon icon={faExternalLinkAlt} />
+                        </button>
+                    </div>
+                    <div css={tw`mx-2 flex`}>
+                        <button
+                            onClick={() => {
+                                navigator.clipboard.writeText(
+                                    window.location.origin +
+                                        window.location.pathname +
+                                        window.location.search +
+                                        '#' +
+                                        inputs.join('&'),
+                                );
+                                setCopied('Copied');
+                                setTimeout(() => {
+                                    setCopied('Share');
+                                }, 3000);
+                            }}
+                            css={tw`m-2 px-3 py-2 h-10 rounded-md bg-gray-300 hover:cursor-pointer hover:outline-none focus:outline-none flex-shrink flex-grow flex flex-col`}
+                        >
+                            <span css={tw`mx-auto`}>
+                                {copied}&nbsp;
+                                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                            </span>
                         </button>
                     </div>
                     <div css={tw`flex`}>
