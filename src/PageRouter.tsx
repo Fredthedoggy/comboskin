@@ -7,7 +7,7 @@ import Navbar from './components/navbar';
 import tw from 'twin.macro';
 import { Analytics } from './Analytics';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiscord, faGithub, faGithubSquare } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { customMarkup } from './effects/otherMerge';
 
 const Settings = React.lazy(() => import('./components/pages/settings/settings'));
@@ -135,13 +135,16 @@ export default function PageRouter() {
                         </Route>
                     </Switch>
                 )}
-                <div css={tw`h-20 w-full mt-auto`}>
-                    <div css={tw`text-gray-600 w-full bg-gray-200 flex flex-row content-center h-14 mt-6`}>
-                        <span css={tw`m-auto`}>
-                            © Copyright 2021{new Date().getFullYear() !== 2021 ? ' - ' + new Date().getFullYear() : ''}
-                            &nbsp;Fredthedoggy
-                        </span>
-                        <div css={tw`absolute right-2`}>
+                <div css={tw`flex flex-col w-full mt-auto`}>
+                    <div css={tw`text-gray-600 w-full bg-gray-200 flex flex-col content-center sm:h-14 mt-6`}>
+                        <div css={tw`h-14 content-center mx-auto flex`}>
+                            <span css={tw`m-auto`}>
+                                © Copyright 2021
+                                {new Date().getFullYear() !== 2021 ? ' - ' + new Date().getFullYear() : ''}
+                                &nbsp;Fredthedoggy
+                            </span>
+                        </div>
+                        <div css={tw`sm:absolute sm:right-2 content-center mx-auto sm:mx-0`}>
                             <span css={tw`w-24 h-14 flex`}>
                                 <a
                                     href={'https://discord.gg/Ssem4bQMZz'}
