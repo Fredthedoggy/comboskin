@@ -43,10 +43,10 @@ export function Input({
             <label css={tw`w-full text-2xl my-1`}>
                 <div css={tw`text-center`}>{display}</div>
             </label>
-            <div css={tw`flex flex-row`}>
+            <div css={tw`flex flex-col md:flex-row content-center`}>
                 <div
                     css={css`
-                        ${tw`w-max inline-block rounded-sm my-auto overflow-hidden`}
+                        ${tw`w-max inline-block rounded-sm my-2 md:my-auto mx-auto md:mx-initial overflow-hidden `}
                         .default {
                             display: block;
                         }
@@ -84,11 +84,11 @@ export function Input({
                     type={'text'}
                     value={value}
                     onChange={() => setValue(textInput.current?.value ?? 'da8a8993-adfa-4d29-99b1-9d0f62fbb78d')}
-                    css={tw`h-10 py-2 px-2 rounded-md hover:outline-none focus:outline-none mx-3`}
+                    css={tw`h-10 py-2 px-2 rounded-md hover:outline-none focus:outline-none my-3 md:my-0 md:mx-3 w-60 md:w-auto`}
                 />
                 <input
                     type="submit"
-                    css={tw`px-3 py-2 h-10 rounded-md bg-gray-300 hover:cursor-pointer hover:outline-none focus:outline-none`}
+                    css={tw`px-3 py-2 h-10 rounded-md bg-gray-300 hover:cursor-pointer hover:outline-none focus:outline-none w-60 md:w-auto`}
                     value={'Update Skin'}
                 />
             </div>

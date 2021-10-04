@@ -21,6 +21,9 @@ module.exports = {
             },
             height: {
                 max: 'max-content',
+            },
+            margin: {
+                initial: 'initial'
             }
         },
     },
