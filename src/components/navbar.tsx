@@ -43,7 +43,7 @@ export default function Navbar({ uuid }: { uuid: string }) {
                         <div css={tw`m-auto object-scale-down w-14 h-14 flex content-center`}>
                             <img
                                 alt={'User Icon'}
-                                src={'https://crafatar.com/avatars/' + uuid}
+                                src={'https://crafatar.com/avatars/' + uuid + '?overlay'}
                                 css={tw`rounded-sm h-8 w-8 m-auto`}
                             />
                         </div>
