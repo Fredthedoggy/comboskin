@@ -9,13 +9,13 @@ export default function OtherViewer({ skinDetails }: { other: string; skinDetail
     const skins = window.location.hash && window.location.hash.length > 1 ? window.location.hash.slice(1).split('&'): []
 
     const [inputs, setInputs] = useState(
-        Array.from(Array(skinDetails.skins).keys()).map((n) => skins[n] ?? localStorage.getItem('skin' + n) ?? ''),
+        Array.from(Array(skinDetails.skins).keys()).filter(n => !skinDetails.usernames || !skinDetails.usernames[n.toString()]).map((n) => skins[n] ?? localStorage.getItem('skin' + n) ?? ''),
     );
 
     useEffect(() => {
         async function effect() {
             setSkinData(
-                (await otherMerge(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                (await otherMerge(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input), ...(!skinDetails.usernames ? [] : Object.values(skinDetails.usernames).map(u => 'https://crafatar.com/skins/' + u)))) ??
                 steve,
             );
         }
@@ -28,7 +28,7 @@ export default function OtherViewer({ skinDetails }: { other: string; skinDetail
         <ViewPage
             updateSkin={async () => {
                 setSkinData(
-                    (await otherMerge(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                    (await otherMerge(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input), ...(!skinDetails.usernames ? [] : Object.values(skinDetails.usernames).map(u => 'https://crafatar.com/skins/' + u)))) ??
                     steve,
                 );
             }}

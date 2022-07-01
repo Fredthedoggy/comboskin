@@ -5,6 +5,9 @@ export interface customMarkup {
     author?: string
     name?: string
     short?: string
+    usernames?: {
+        [key: string]: string
+    }
     ranges: {
         skin: number;
         start: {
