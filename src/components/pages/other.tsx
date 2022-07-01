@@ -16,7 +16,7 @@ export default function Other({data}: { data: customMarkup[] }) {
                                     (await otherMerge(
                                         image,
                                         ...Array.from(Array(image.skins).keys()).map(
-                                            (n) => image.usernames && Object.keys(image.usernames).includes(n.toString()) ? image.usernames[n] : 'https://crafatar.com/skins/' + localStorage.getItem('skin' + n),
+                                            (n) => image.usernames && image.usernames[n.toString()] ? 'https://crafatar.com/skins/' + image.usernames[n] : 'https://crafatar.com/skins/' + localStorage.getItem('skin' + n),
                                         ),
                                     )) ?? ''
                                 }
