@@ -16,7 +16,7 @@ export default function Viewer({ skinDetails }: { combo: string; skinDetails: Co
     useEffect(() => {
         async function effect() {
             setSkinData(
-                (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input))) ??
                     steve,
             );
         }
@@ -29,7 +29,7 @@ export default function Viewer({ skinDetails }: { combo: string; skinDetails: Co
         <ViewPage
             updateSkin={async () => {
                 setSkinData(
-                    (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                    (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input))) ??
                         steve,
                 );
             }}

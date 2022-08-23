@@ -77,7 +77,7 @@ export default function CustomPage() {
                                 setImage(
                                     (await SkinMerger(
                                         data,
-                                        ...inputs.map((input) => 'https://crafatar.com/skins/' + input),
+                                        ...inputs.map((input) => 'https://mc-heads.net/skin/' + input),
                                     )) ?? steve,
                                 );
                             },
@@ -116,7 +116,7 @@ export default function CustomPage() {
                         setImage(
                             (await SkinMerger(
                                 skinData,
-                                ...inputs.map((input) => 'https://crafatar.com/skins/' + input),
+                                ...inputs.map((input) => 'https://mc-heads.net/skin/' + input),
                             )) ?? steve,
                         );
                     }}
