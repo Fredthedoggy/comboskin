@@ -21,7 +21,7 @@ export default function Home({ data }: { data: ComboAPI[] }) {
                                     (await SkinMerger(
                                         image,
                                         ...Array.from(Array(image.amount).keys()).map(
-                                            (n) => 'https://crafatar.com/skins/' + localStorage.getItem('skin' + n),
+                                            (n) => 'https://mc-heads.net/skin/' + localStorage.getItem('skin' + n),
                                         ),
                                     )) ?? ''
                                 }

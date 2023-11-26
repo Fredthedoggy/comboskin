@@ -15,7 +15,7 @@ export default function CustomCombiner({ skinDetails }: { combo: string; skinDet
     useEffect(() => {
         async function effect() {
             setSkinData(
-                (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input))) ??
                     steve,
             );
         }
@@ -28,7 +28,7 @@ export default function CustomCombiner({ skinDetails }: { combo: string; skinDet
         async function effect() {
             setInputs(Array.from(Array(skinDetails.amount).keys()).map((n) => localStorage.getItem('skin' + n) ?? ''));
             setSkinData(
-                (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input))) ??
                     steve,
             );
         }
@@ -42,7 +42,7 @@ export default function CustomCombiner({ skinDetails }: { combo: string; skinDet
             name={'Custom Skin'}
             updateSkin={async () => {
                 setSkinData(
-                    (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ??
+                    (await SkinMerger(skinDetails, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input))) ??
                         steve,
                 );
             }}

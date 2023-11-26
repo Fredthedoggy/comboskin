@@ -13,7 +13,7 @@ export default function OtherCombiner({ json }: { json: customMarkup }) {
 
     useEffect(() => {
         async function effect() {
-            setSkinData((await otherMerge(json, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ?? steve);
+            setSkinData((await otherMerge(json, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input))) ?? steve);
         }
 
         effect().then();
@@ -23,7 +23,7 @@ export default function OtherCombiner({ json }: { json: customMarkup }) {
     useEffect(() => {
         async function effect() {
             setInputs(Array.from(Array(json.skins).keys()).map((n) => localStorage.getItem('skin' + n) ?? ''));
-            setSkinData((await otherMerge(json, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ?? steve);
+            setSkinData((await otherMerge(json, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input))) ?? steve);
         }
 
         effect().then();
@@ -36,7 +36,7 @@ export default function OtherCombiner({ json }: { json: customMarkup }) {
             name={'Custom Combination'}
             updateSkin={async () => {
                 setSkinData(
-                    (await otherMerge(json, ...inputs.map((input) => 'https://crafatar.com/skins/' + input))) ?? steve,
+                    (await otherMerge(json, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input))) ?? steve,
                 );
             }}
             inputs={inputs}

@@ -15,7 +15,7 @@ export default function OtherViewer({ skinDetails }: { other: string; skinDetail
     useEffect(() => {
         async function effect() {
             setSkinData(
-                (await otherMerge(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input), ...(!skinDetails.usernames ? [] : Object.values(skinDetails.usernames).map(u => 'https://crafatar.com/skins/' + u)))) ??
+                (await otherMerge(skinDetails, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input), ...(!skinDetails.usernames ? [] : Object.values(skinDetails.usernames).map(u => 'https://mc-heads.net/skin/' + u)))) ??
                 steve,
             );
         }
@@ -28,7 +28,7 @@ export default function OtherViewer({ skinDetails }: { other: string; skinDetail
         <ViewPage
             updateSkin={async () => {
                 setSkinData(
-                    (await otherMerge(skinDetails, ...inputs.map((input) => 'https://crafatar.com/skins/' + input), ...(!skinDetails.usernames ? [] : Object.values(skinDetails.usernames).map(u => 'https://crafatar.com/skins/' + u)))) ??
+                    (await otherMerge(skinDetails, ...inputs.map((input) => 'https://mc-heads.net/skin/' + input), ...(!skinDetails.usernames ? [] : Object.values(skinDetails.usernames).map(u => 'https://mc-heads.net/skin/' + u)))) ??
                     steve,
                 );
             }}
